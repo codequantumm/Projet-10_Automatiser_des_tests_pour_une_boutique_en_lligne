@@ -6,7 +6,7 @@
       "strict": true,
       "esModuleInterop": true,
       "skipLibCheck": true,
-      "types": ["cypress"]
+      "types": ["cypress", "@faker-js/faker"]
     },
     "include": [
         "**/*.ts", 
