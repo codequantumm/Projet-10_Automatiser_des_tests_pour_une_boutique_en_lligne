@@ -3,8 +3,11 @@ import webpackPreprocessor from '@cypress/webpack-preprocessor';
 import path from 'path';
 
 export default defineConfig({
+  env: {
+    apiUrl: 'http://localhost:8081'
+  },
   e2e: {
-    baseUrl: 'http://localhost:8081',
+    baseUrl: 'http://localhost:8080',
     specPattern: 'cypress/e2e/**/*.cy.{js,jsx,ts,tsx}', 
     supportFile: 'cypress/support/e2e.ts', 
     setupNodeEvents(on, config) {
