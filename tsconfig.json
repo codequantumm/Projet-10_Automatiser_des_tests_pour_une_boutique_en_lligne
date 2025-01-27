@@ -1,3 +1,5 @@
+
+
 {
     "compilerOptions": {
       "target": "es6",
@@ -11,6 +13,7 @@
     "include": [
         "**/*.ts", 
         "cypress/**/*.js"
+       
 ]
 
   }
