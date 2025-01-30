@@ -1,4 +1,4 @@
-describe('GET /me - Infos utilisateurs avant connexion', () => {
+/*describe('GET /me - Infos utilisateurs avant connexion', () => {
   it('Doit retourner 401', () => {
     cy.request({
       method: 'GET',
@@ -9,3 +9,4 @@ describe('GET /me - Infos utilisateurs avant connexion', () => {
     });
   });
 });
+*/

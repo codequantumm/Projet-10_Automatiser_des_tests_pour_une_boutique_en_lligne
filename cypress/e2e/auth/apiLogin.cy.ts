@@ -1,10 +1,11 @@
-// Test d'intégration pour l'API POST /login
+/// <reference types="cypress" />
+
 describe('POST /login - Authentification réussie', () => {
-  const apiLogin = `${Cypress.env('apiUrl')}/login`;
+  const apiLogin: string = `${Cypress.env('apiUrl')}/login`;
 
   it('Effectue une requête POST sur /login et valide la réponse 200 avec un token', () => {
     cy.login().then(() => {
-      const token = Cypress.env('authToken');
+      const token: string | undefined = Cypress.env('authToken');
       expect(token).to.exist;
     });
   });
@@ -15,3 +16,4 @@ describe('POST /login - Authentification échouée', () => {
     cy.loginInvalid('wrong@example.com', 'wrongpass');
   });
 });
+

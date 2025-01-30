@@ -1,20 +1,35 @@
-
-
 {
-    "compilerOptions": {
-      "target": "es6",
-      "lib": ["es6", "dom"],
-      "module": "commonjs",
-      "strict": true,
-      "esModuleInterop": true,
-      "skipLibCheck": true,
-      "types": ["cypress", "@faker-js/faker"]
-    },
-    "include": [
-        "**/*.ts", 
-        "cypress/**/*.js"
-       
-]
-
-  }
-  
+  "extends": "@tsconfig/cypress/tsconfig.json",
+  "compilerOptions": {
+    "target": "es6",
+    "lib": [
+      "es6",
+      "dom"
+    ],
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "types": [
+      "cypress",
+      "mocha"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@src/*": [
+        "src/*"
+      ]
+    }
+  },
+  "include": [
+    "cypress/**/*.ts",
+    "node_modules/cypress/types/**/*.ts",
+    "cypress/support/**/*.ts",
+    "cypress/e2e/**/*.ts",
+    "cypress/support/index.d.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
