@@ -1,11 +1,8 @@
-  /// <reference types="cypress" />
-
 import { Product } from "../types/inerfaceProduit";
-
 
   describe('Panier - Test dynamique pour chaque produit', () => {
     beforeEach(() => {
-      cy.connexion(); // Connexion obligatoire avant le test
+      cy.connexion(); 
       cy.viderPanier();
     });
   
@@ -16,11 +13,11 @@ import { Product } from "../types/inerfaceProduit";
           console.log(products);
         });
         
-        const products = response.body; // Liste des produits
+        const products = response.body; 
         cy.log(`📦 Nombre de produits récupérés : ${products.length}`);
   
         products.forEach((product: { id: number }) => {
-          cy.visit(`/#/products/${product.id}`); // URL dynamique
+          cy.visit(`/#/products/${product.id}`); 
           cy.log(`🛒 Test du produit ID: ${product.id}`);
   
           cy.get('[data-cy="detail-product-stock"]').should('exist').and('be.visible')

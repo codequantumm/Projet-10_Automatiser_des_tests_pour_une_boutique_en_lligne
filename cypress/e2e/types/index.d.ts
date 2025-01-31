@@ -10,7 +10,7 @@ declare namespace Cypress {
       viderPanier(): Chainable<void>;
       ajouterProduitAuPanier(produit: number, quantity: number): Chainable<void>;
       ajouterProduitAuPanierRuptureStock(produit: number, quantity: number): Chainable<void>;
-      verifierCommande(url: string, statusCode: number): Chainable<void>;
+      verifierCommande(url: string, statusCode: number): Chainable<Response>;
       verifierStatusRequete(url: string, statusCode: number): Chainable<void>;
       verifierListeProduits(): Chainable<void>;
       ajouterAvisMalveillant(avisXSS: { title: string; comment: string; rating: number }): Chainable<void>;

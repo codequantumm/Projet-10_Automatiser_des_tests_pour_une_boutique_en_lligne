@@ -95,7 +95,7 @@ Cypress.Commands.add('verifierListeProduits', () => {
 
 Cypress.Commands.add('viderPanier', () => {
   cy.login().then(() => {
-    cy.verifierCommande(apiOrders, 200);
+    return cy.verifierCommande(apiOrders, 200);
   }).then((response) => {
     const orderLines = response.body.orderLines;
     if (orderLines && orderLines.length > 0) {

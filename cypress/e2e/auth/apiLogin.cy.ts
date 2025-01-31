@@ -1,12 +1,10 @@
-/// <reference types="cypress" />
 
 describe('POST /login - Authentification réussie', () => {
-  const apiLogin: string = `${Cypress.env('apiUrl')}/login`;
-
   it('Effectue une requête POST sur /login et valide la réponse 200 avec un token', () => {
     cy.login().then(() => {
       const token: string | undefined = Cypress.env('authToken');
-      expect(token).to.exist;
+      expect(token).to.be.a('string');
+      cy.wrap(token).should('exist');
     });
   });
 });
