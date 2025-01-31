@@ -6,7 +6,7 @@ declare namespace Cypress {
     interface Chainable {
       login(): Cypress.Chainable<void>;
       loginInvalid(email: string, password: string): Cypress.Chainable<void>;
-      connexion(): Chainable<void>;
+          connexion(): Chainable<void>;
       viderPanier(): Chainable<void>;
       ajouterProduitAuPanier(produit: number, quantity: number): Chainable<void>;
       ajouterProduitAuPanierRuptureStock(produit: number, quantity: number): Chainable<void>;

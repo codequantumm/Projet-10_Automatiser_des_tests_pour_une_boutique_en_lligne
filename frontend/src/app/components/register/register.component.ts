@@ -68,8 +68,8 @@ export class RegisterComponent implements OnInit {
     }
 
     checkPasswords: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
-        let confirmPass = control?.value;
-        let pass = control.parent?.get('first')?.value
+        const confirmPass = control?.value;
+        const pass = control.parent?.get('first')?.value
         return pass === confirmPass ? null : {notSame: true}
     }
 
