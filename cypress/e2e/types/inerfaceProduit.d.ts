@@ -23,3 +23,15 @@ export interface Product {
     };
     quantity: number;
   };
+
+export interface Order {
+  id: number;
+  firstname: string;
+  lastname: string;
+  address: string;
+  zipCode: string;
+  city: string;
+  date: string;
+  validated: boolean;
+  orderLines: OrderLine[];
+}

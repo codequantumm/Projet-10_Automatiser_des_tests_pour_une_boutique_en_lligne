@@ -1,13 +1,13 @@
 describe('POST Review - Ajouter un avis', () => {
   it('devrait créer un avis avec succès', () => {
-    it('Ajoute un avis valide', () => {
+   
       cy.ajouterAvis({
         title: 'Excellent produit !',
         comment: "J'adore ce produit, je le recommande.",
         rating: 5,
       });
     });
-  });
+  
 
   it('devrait retourner une erreur 401 si un utilisateur non connecté tente de poster un avis', () => {
     const avis = { title: 'string', comment: 'string', rating: 5 };

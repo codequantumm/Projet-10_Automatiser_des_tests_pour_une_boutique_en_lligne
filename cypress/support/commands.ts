@@ -1,5 +1,4 @@
 import { OrderLines, Product } from "cypress/e2e/types/inerfaceProduit";
-
 export const apiOrders = `${Cypress.env('apiUrl')}/orders`;
 
 Cypress.Commands.add('login', () => {
@@ -30,24 +29,15 @@ Cypress.Commands.add('loginInvalid', (username: string, password: string) => {
   });
 });
 
-Cypress.Commands.add('verifierStatusRequete', (url: string, expectedStatus: number) => {
+Cypress.Commands.add('verifierPanier', (url: string, expectedStatus: number) => {
   cy.request({
     method: 'GET',
-    url: apiOrders,
+    url: url,
     failOnStatusCode: false,
-  }).then((response) => {
-    expect(response.status).to.eq(expectedStatus);
-  });
-});
-
-
-Cypress.Commands.add('verifierCommande', () => {
-  cy.request({
-    method: 'GET',
-    url: apiOrders,
     headers: { Authorization: `Bearer ${Cypress.env('authToken')}` },
   }).then((response) => {
-    expect(response.status).to.eq(200);
+    expect(response.status).to.eq(expectedStatus);
+
     expect(response.body).to.have.property('id').that.is.a('number');
     expect(response.body).to.have.property('orderLines').that.is.an('array');
 
@@ -60,6 +50,8 @@ Cypress.Commands.add('verifierCommande', () => {
       expect(line.product).to.have.property('price').that.is.a('number');
       expect(line.product).to.have.property('picture').that.is.a('string');
       expect(line).to.have.property('quantity').that.is.a('number');
+
+      return response; 
     });
   });
 });
@@ -95,7 +87,7 @@ Cypress.Commands.add('verifierListeProduits', () => {
 
 Cypress.Commands.add('viderPanier', () => {
   cy.login().then(() => {
-    return cy.verifierCommande(apiOrders, 200);
+    return cy.verifierPanier(apiOrders, 200);
   }).then((response) => {
     const orderLines = response.body.orderLines;
     if (orderLines && orderLines.length > 0) {
@@ -103,6 +95,7 @@ Cypress.Commands.add('viderPanier', () => {
         return cy.request({
           method: 'DELETE',
           url: `http://localhost:8081/orders/${line.id}/delete`,
+          failOnStatusCode: false,
           headers: {
             Authorization: `Bearer ${Cypress.env('authToken')}`,
           },
@@ -114,7 +107,7 @@ Cypress.Commands.add('viderPanier', () => {
   });
 });
 
-Cypress.Commands.add('ajouterProduitAuPanier', (product: number, quantity: number) => {
+Cypress.Commands.add('ajouterProduitAuPanierApI', (product: number, quantity: number) => {
   cy.viderPanier(); 
   cy.login().then(() => {
     cy.request({
@@ -129,9 +122,8 @@ Cypress.Commands.add('ajouterProduitAuPanier', (product: number, quantity: numbe
       },
     }).then((response) => {
       expect(response.status).to.eq(200);
-      expect(response.body.orderLines[0].product.name).to.eq(
-        'Extrait de nature'
-      );
+      const addedProduct = response.body.orderLines[0].product;
+      expect(addedProduct.id).to.eq(product);
     });
   });
 });
@@ -155,7 +147,6 @@ Cypress.Commands.add('ajouterProduitAuPanierRuptureStock', (product: number, qua
     });
   });
 });
-
 
 Cypress.Commands.add('ajouterAvisMalveillant', () => {
   cy.login().then(() => {
@@ -216,3 +207,98 @@ Cypress.Commands.add('connexion', () => {
   cy.get('[data-cy="login-input-password"]').type(password);
   cy.get('[data-cy="login-submit"]').click();
 });
+
+
+Cypress.Commands.add('ajouterProduitAuPanier', () => {
+  cy.get('[data-cy="detail-product-add"]').click();
+      cy.wait(2000);
+
+      // Étape 4 : Vérifier que le produit est bien ajouté au panier
+      cy.get('[data-cy="nav-link-cart"]').click();
+      cy.get('[data-cy="cart-line-quantity"]')
+        .should('exist')
+        .should('have.value', '1');
+  });
+
+
+Cypress.Commands.add('verifierProduitDansPanier', (productId, expectedQuantity) => {
+  cy.request({
+    method: 'GET',
+    url: 'http://localhost:8081/orders',
+    headers: { Authorization: `Bearer ${Cypress.env('authToken')}` },
+  }).then((response) => {
+    expect(response.status).to.eq(200);
+    const productInCart = response.body.find((p: { id: number; }) => p.id === productId);
+    cy.wrap(productInCart).should('exist');
+    expect(productInCart.quantity).to.eq(expectedQuantity);
+
+    cy.log(`✅ Produit ${productId} présent dans le panier avec quantité: ${expectedQuantity}`);
+  });
+});
+
+Cypress.Commands.add('verifierStockMaJ', (productId) => {
+  cy.get('@initialStock').then(($initialStock) => { 
+    const initialStock = Number($initialStock); 
+
+    cy.request('GET', `http://localhost:8081/products/${productId}`).then((updatedResponse) => {
+      expect(updatedResponse.status).to.eq(200);
+
+      cy.log("Réponse API produit mis à jour:", JSON.stringify(updatedResponse.body));
+
+      const updatedStock: number = updatedResponse.body.availableStock;
+
+      expect(updatedStock, "Stock mis à jour non défini").to.be.a('number');
+      expect(updatedStock).to.equal(initialStock - 1); 
+
+      cy.log(`📉 Nouveau stock pour le produit ${productId}: ${updatedStock}`);
+
+      cy.visit(`/#/products/${productId}`);
+      cy.get('[data-cy="detail-product-stock"]')
+        .should('exist')
+        .should('be.visible')
+        .and('contain', updatedStock);
+    });
+  });
+});
+
+
+Cypress.Commands.add('verifierStockProduit', (productId, initialStock) => {
+  cy.visit(`/#/products/${productId}`);
+      cy.get('[data-cy="detail-product-stock"]')
+        .should('exist')
+        .should('be.visible')
+        .and('contain', initialStock);
+}); 
+
+Cypress.Commands.add('verifierStockInitialNegatif', (productId: number) => {
+  cy.request(`GET`, `http://localhost:8081/products/${productId}`).then((response) => {
+    expect(response.status).to.eq(200);
+
+    cy.log("Réponse API produit:", JSON.stringify(response.body));
+
+    const initialStock = response.body.availableStock;
+
+    expect(initialStock, "Stock initial incorrect").to.be.a('number');
+    expect(initialStock).to.be.lessThan(0);
+
+    cy.log(`🚨 Stock initial négatif pour le produit ${productId}: ${initialStock}`);
+    cy.wrap(initialStock).as('initialStock');
+  });
+});
+
+
+Cypress.Commands.add('verifierStockInitial', (productId) => {
+  cy.request(`GET`, `http://localhost:8081/products/${productId}`).then((response) => {
+    expect(response.status).to.eq(200);
+
+    cy.log("Réponse API produit:", JSON.stringify(response.body));
+
+    const initialStock = response.body.availableStock;
+
+    expect(initialStock, "Stock initial non défini").to.be.a('number');
+    expect(initialStock).to.be.greaterThan(0);
+
+    cy.log(`✅ Stock initial pour le produit ${productId}: ${initialStock}`);
+    cy.wrap(initialStock).as('initialStock');
+  });
+}); 
