@@ -21,6 +21,7 @@ declare namespace Cypress {
       verifierStockProduit(productId, initialStock): Chainable<void>;
       verifierStockInitial(productId): Chainable<void>;
       verifierStockInitialNegatif(productId: number): Chainable<void>;
+      verifierDonneesSansAuth(url: string, expectedStatus: number): Chainable<void>;
     }
   }
 

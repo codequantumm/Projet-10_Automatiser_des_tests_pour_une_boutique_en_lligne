@@ -29,6 +29,16 @@ Cypress.Commands.add('loginInvalid', (username: string, password: string) => {
   });
 });
 
+Cypress.Commands.add('verifierDonneesSansAuth', (url: string, expectedStatus: number) => {
+  cy.request({
+    method: 'GET',
+    url: url,
+    failOnStatusCode: false,
+  }).then((response) => {
+    expect(response.status).to.eq(expectedStatus);
+ });
+  });
+
 Cypress.Commands.add('verifierPanier', (url: string, expectedStatus: number) => {
   cy.request({
     method: 'GET',

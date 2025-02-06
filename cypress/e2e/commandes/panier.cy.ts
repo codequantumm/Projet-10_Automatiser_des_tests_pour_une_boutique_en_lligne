@@ -12,7 +12,7 @@ describe("Panier - Test dynamique pour chaque produit", () => {
 
     cy.verifierStockInitial(productId);
     cy.get('@initialStock').then((initialStock) => {
-    cy.log(`Le stock initial récupéré est : ${initialStock}`);
+      cy.log(`Le stock initial récupéré est : ${initialStock}`);
     
       cy.verifierStockProduit(productId, initialStock);
 
@@ -20,7 +20,8 @@ describe("Panier - Test dynamique pour chaque produit", () => {
 
       cy.verifierStockMaJ(productId);
 
-      cy.verifierPanier(apiOrders, 200)
+      cy.verifierPanier(apiOrders, 200);
+  
     });
   });
 
@@ -34,10 +35,11 @@ describe("Panier - Test dynamique pour chaque produit", () => {
       cy.verifierStockProduit(productId, initialStock);
 
       cy.ajouterProduitAuPanier(productId);
-
+      
       cy.verifierStockMaJ(productId);
-
+      
       cy.verifierPanier(apiOrders, 404)
+      
     
     });
   });
@@ -48,8 +50,10 @@ describe("Panier - Test dynamique pour chaque produit", () => {
       response.body.forEach((product) => {
         cy.visit(`/#/products/${product.id}`);
         cy.get('[data-cy="detail-product-quantity"]').clear().type("-1");
+        
         cy.get('[data-cy="detail-product-add"]').click();
         cy.location("href").should("not.eq", "http://localhost:8080/#/cart");
+        
       });
     });
   });
@@ -60,7 +64,9 @@ describe("Panier - Test dynamique pour chaque produit", () => {
         cy.visit(`/#/products/${product.id}`);
         cy.get('[data-cy="detail-product-quantity"]').clear().type("21");
         cy.get('[data-cy="detail-product-add"]').should("be.disabled");
+        cy.screenshot(`bouton_ajout_disabled_qte_21_produit_${product.id}`);
       });
     });
+
   });
 }); 

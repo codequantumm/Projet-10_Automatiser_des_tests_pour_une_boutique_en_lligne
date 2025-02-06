@@ -2,7 +2,7 @@ import { apiOrders } from '../../support/commands';
 
 describe('GET /orders - Non authentifié, accès refusé', () => {
   it('Doit retourner une erreur 401 pour une requête non authentifiée', () => {
-    cy.verifierPanier(apiOrders, 401);
+    cy.verifierDonneesSansAuth(apiOrders, 401);
   });
 });
 
