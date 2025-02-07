@@ -1,11 +1,5 @@
-# Installation du projet
-1. Téléchargez ou clonez le dépôt
-2. Depuis un terminal ouert dans le dossier du projet, lancer la commande : `sudo docker-compose up --build`
-3. Ouvrez le site depuis la page http://localhost:8080 
 
-Nb : à l'étape 2, ne pas ajouter le `sudo` si vous êtes sous Windows (sauf dernière version de Windows 11) (PowerShell ou Shell) : sudo n'existant pas et Docker Desktop configurant automatiquement Docker pour ne pas avoir besoin des droits administrateur.
-
-# README - Tests d'Automatisation avec Cypress
+# Tests d'Automatisation avec Cypress
 
 ## Introduction
 
@@ -75,6 +69,28 @@ Pour générer un rapport de test détaillé, exécutez les tests avec l'option 
 
 ```npx cypress run --reporter mochawesome```
 
+### 2. Configuration pour fusionner plusieur rapports
+
+Si plusieurs suites de tests sont exécutées séparément et que tu souhaites les regrouper en un seul rapport HTML, voici les étapes à suivre :
+
+**Écraser les anciens rapports**
+
+Avant de générer les rapports, il est important de configurer `mochawesome` pour écraser les anciens fichiers JSON. Tu peux le faire en exécutant les tests avec l'option `overwrite=true` dans le fichier de configuration cypress (cypress.config.ts).
+et lance la commande suivante : 
+
+```npx cypress run --reporter mochawesome --reporter-options reportDir=cypress/reports/mochawesome-report,overwrite=true,html=false,json=true```
+
+**Fusionner les rapports**
+
+Une fois tous les tests exécutés, utilise mochawesome-merge pour combiner les fichiers JSON générés :
+
+`npx mochawesome-merge cypress/reports/*.json -o cypress/reports/merged.json`
+
+**Générer un rapport HTML unique**
+
+Convertis le fichier fusionné en un rapport HTML lisible avec marge :
+
+```npx marge cypress/reports/merged.json -o cypress/reports```
 
 ### 2. Consulter le rapport généré
 
