@@ -1,0 +1,105 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-02-07T14:52:37.460Z",
+    "end": "2025-02-07T14:52:39.072Z",
+    "duration": 1612,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "b9f2553d-3552-468c-81d4-c4a1718f4448",
+      "title": "",
+      "fullFile": "cypress/e2e/smoke/smokeProduct.cy.ts",
+      "file": "cypress/e2e/smoke/smokeProduct.cy.ts",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "e94c576e-264b-481a-9e4c-8f9382e08109",
+          "title": "Smoke Test - Disponibilité des produits",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Vérifie la disponibilité du produit",
+              "fullTitle": "Smoke Test - Disponibilité des produits Vérifie la disponibilité du produit",
+              "timedOut": null,
+              "duration": 1576,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request('GET', 'http://localhost:8081/products').then((response) => {\n    const products = response.body;\n    products.forEach((product) => {\n        cy.visit(`/#/products/${product.id}`);\n        cy.get(\"[data-cy='detail-product-stock']\").should('be.visible');\n        cy.get('[data-cy=\"detail-product-price\"]').should('be.visible');\n        cy.get('[data-cy=\"detail-product-quantity\"]').should('be.visible');\n        cy.get('[data-cy=\"detail-product-add\"]').should('be.visible').should('not.be.disabled');\n    });\n});",
+              "err": {},
+              "uuid": "8c235975-7e81-4c00-a42a-7e20cd93df73",
+              "parentUUID": "e94c576e-264b-481a-9e4c-8f9382e08109",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "8c235975-7e81-4c00-a42a-7e20cd93df73"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1576,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/mochawesome-report",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

@@ -1,0 +1,872 @@
+{
+  "stats": {
+    "suites": 10,
+    "tests": 19,
+    "passes": 16,
+    "pending": 0,
+    "failures": 3,
+    "testsRegistered": 19,
+    "passPercent": 84.21052631578948,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false,
+    "start": "2025-02-07T14:51:55.714Z",
+    "end": "2025-02-07T14:52:39.072Z",
+    "duration": 43358
+  },
+  "results": [
+    {
+      "uuid": "099b862a-c99f-4fc5-9786-1ebc7b79d10e",
+      "title": "",
+      "fullFile": "cypress/e2e/auth/apiLogin.cy.ts",
+      "file": "cypress/e2e/auth/apiLogin.cy.ts",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "bf9dd09b-1fb3-47c1-a8d7-a5231d74f5e5",
+          "title": "POST /login - Authentification réussie",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Effectue une requête POST sur /login et valide la réponse 200 avec un token",
+              "fullTitle": "POST /login - Authentification réussie Effectue une requête POST sur /login et valide la réponse 200 avec un token",
+              "timedOut": null,
+              "duration": 566,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.login().then(() => {\n    const token = Cypress.env('authToken');\n    expect(token).to.be.a('string');\n    cy.wrap(token).should('exist');\n});",
+              "err": {},
+              "uuid": "a8b34b4d-936d-414d-b5ba-bd1a4d631122",
+              "parentUUID": "bf9dd09b-1fb3-47c1-a8d7-a5231d74f5e5",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "a8b34b4d-936d-414d-b5ba-bd1a4d631122"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 566,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "d668f1a4-e1f9-48b0-98b0-3cbda8fab740",
+          "title": "POST /login - Authentification échouée",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Retourne 401 pour des identifiants invalides",
+              "fullTitle": "POST /login - Authentification échouée Retourne 401 pour des identifiants invalides",
+              "timedOut": null,
+              "duration": 68,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.loginInvalid('wrong@example.com', 'wrongpass');",
+              "err": {},
+              "uuid": "c9cd0f90-9eb7-4224-b864-cafd2ae7b7e4",
+              "parentUUID": "d668f1a4-e1f9-48b0-98b0-3cbda8fab740",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "c9cd0f90-9eb7-4224-b864-cafd2ae7b7e4"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 68,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "370ef46d-760a-46cd-ba17-5d579be87f2c",
+      "title": "",
+      "fullFile": "cypress/e2e/auth/connexion.cy.ts",
+      "file": "cypress/e2e/auth/connexion.cy.ts",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "23e4deb4-331a-4ff9-a6d5-e5e102d6de58",
+          "title": "Test 2 - Connexion",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Connexion avec un utilisateur existant",
+              "fullTitle": "Test 2 - Connexion Connexion avec un utilisateur existant",
+              "timedOut": null,
+              "duration": 1909,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.connexion();\ncy.get('[data-cy=\"nav-link-cart\"]').should('be.visible').should('contain', 'Mon panier');",
+              "err": {},
+              "uuid": "ac0ef8f6-e7c5-4779-9813-86b751abb57d",
+              "parentUUID": "23e4deb4-331a-4ff9-a6d5-e5e102d6de58",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "ac0ef8f6-e7c5-4779-9813-86b751abb57d"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1909,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "e954df68-854b-4e5a-b262-21775c243b33",
+      "title": "",
+      "fullFile": "cypress/e2e/avis/apiReviews.cy.ts",
+      "file": "cypress/e2e/avis/apiReviews.cy.ts",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "b6ad6a1b-c996-4b59-aa87-314fd3f81ea2",
+          "title": "POST Review - Ajouter un avis",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "devrait créer un avis avec succès",
+              "fullTitle": "POST Review - Ajouter un avis devrait créer un avis avec succès",
+              "timedOut": null,
+              "duration": 648,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.ajouterAvis({\n    title: 'Excellent produit !',\n    comment: \"J'adore ce produit, je le recommande.\",\n    rating: 5,\n});",
+              "err": {},
+              "uuid": "69d3dd83-fe9b-4e45-acf9-30800ee9de70",
+              "parentUUID": "b6ad6a1b-c996-4b59-aa87-314fd3f81ea2",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "devrait retourner une erreur 401 si un utilisateur non connecté tente de poster un avis",
+              "fullTitle": "POST Review - Ajouter un avis devrait retourner une erreur 401 si un utilisateur non connecté tente de poster un avis",
+              "timedOut": null,
+              "duration": 89,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const avis = { title: 'string', comment: 'string', rating: 5 };\ncy.posterAvisNonConnecte(avis).then((response) => {\n    expect(response.status).to.eq(401);\n});",
+              "err": {},
+              "uuid": "5abb94d3-bd8c-498a-8d82-7738b4a82cb3",
+              "parentUUID": "b6ad6a1b-c996-4b59-aa87-314fd3f81ea2",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Échec lors de l’ajout d’un avis avec injection XSS",
+              "fullTitle": "POST Review - Ajouter un avis Échec lors de l’ajout d’un avis avec injection XSS",
+              "timedOut": null,
+              "duration": 611,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.ajouterAvisMalveillant({\n    title: '<script>alert(\"XSS\")</script>',\n    comment: '<img src=\"x\" onerror=\"alert(\\'XSS\\')\">',\n    rating: 3,\n});",
+              "err": {},
+              "uuid": "dfa0d25e-b976-4fc6-bf56-d6b943259e2a",
+              "parentUUID": "b6ad6a1b-c996-4b59-aa87-314fd3f81ea2",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "69d3dd83-fe9b-4e45-acf9-30800ee9de70",
+            "5abb94d3-bd8c-498a-8d82-7738b4a82cb3",
+            "dfa0d25e-b976-4fc6-bf56-d6b943259e2a"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1348,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "c56988e8-2bad-4477-8fe0-3e331f920c2f",
+      "title": "",
+      "fullFile": "cypress/e2e/produits/apiProducts.cy.ts",
+      "file": "cypress/e2e/produits/apiProducts.cy.ts",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "5ed18c87-978f-42a9-b44f-f284a1623fe2",
+          "title": "GET /products - Liste des produits",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Devrait retourner un tableau de produits avec les propriétés attendues",
+              "fullTitle": "GET /products - Liste des produits Devrait retourner un tableau de produits avec les propriétés attendues",
+              "timedOut": null,
+              "duration": 664,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.verifierListeProduits();",
+              "err": {},
+              "uuid": "ad1d1c6b-11aa-44fc-8b09-cca4e24a1343",
+              "parentUUID": "5ed18c87-978f-42a9-b44f-f284a1623fe2",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "ad1d1c6b-11aa-44fc-8b09-cca4e24a1343"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 664,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "0c8ef2c0-cf5d-47f2-920a-354ab0ed8c13",
+          "title": "GET /products/:id - Fiche produit spécifique",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Devrait retourner la fiche produit pour un ID valide",
+              "fullTitle": "GET /products/:id - Fiche produit spécifique Devrait retourner la fiche produit pour un ID valide",
+              "timedOut": null,
+              "duration": 72,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const productId = 3;\ncy.request(`http://localhost:8081/products/${productId}`).then((response) => {\n    expect(response.status).to.eq(200);\n    expect(response.body).to.have.property('id', productId);\n    expect(response.body).to.have.property('name').that.is.a('string');\n    expect(response.body)\n        .to.have.property('description')\n        .that.is.a('string');\n});",
+              "err": {},
+              "uuid": "6239570a-38f5-4463-8a25-ba5b0404c86b",
+              "parentUUID": "0c8ef2c0-cf5d-47f2-920a-354ab0ed8c13",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "6239570a-38f5-4463-8a25-ba5b0404c86b"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 72,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "2a64110b-9945-4f18-b8ff-dc01c4baf598",
+      "title": "",
+      "fullFile": "cypress/e2e/commandes/apiOrderAdd.cy.ts",
+      "file": "cypress/e2e/commandes/apiOrderAdd.cy.ts",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "5110bcc1-0c01-445b-8f78-9dec4764910e",
+          "title": "Ajout au panier",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Ajoute un produit disponible",
+              "fullTitle": "Ajout au panier Ajoute un produit disponible",
+              "timedOut": null,
+              "duration": 1204,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.ajouterProduitAuPanierApI(7, 3);",
+              "err": {},
+              "uuid": "a1b10b7d-b11c-4874-97e6-9595ac5f2e9c",
+              "parentUUID": "5110bcc1-0c01-445b-8f78-9dec4764910e",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Échec lors de l’ajout d’un produit en rupture de stock",
+              "fullTitle": "Ajout au panier Échec lors de l’ajout d’un produit en rupture de stock",
+              "timedOut": null,
+              "duration": 1455,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.ajouterProduitAuPanierRuptureStock(4, 2);",
+              "err": {
+                "message": "AssertionError: expected 200 to equal 400",
+                "estack": "AssertionError: expected 200 to equal 400\n    at captureUserInvocationStack (http://localhost:8080/__cypress/runner/cypress_runner.js:138885:94)\n    at Proxy.<anonymous> (http://localhost:8080/__cypress/runner/cypress_runner.js:138913:9)\n    at Proxy.assertEqual (http://localhost:8080/__cypress/runner/cypress_runner.js:79842:12)\n    at Proxy.methodWrapper (http://localhost:8080/__cypress/runner/cypress_runner.js:77688:25)\n    at Context.eval (webpack:///./cypress/support/commands.ts:142:0)\n    at getRet (http://localhost:8080/__cypress/runner/cypress_runner.js:118338:20)\n    at tryCatcher (http://localhost:8080/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise.attempt.Promise.try (http://localhost:8080/__cypress/runner/cypress_runner.js:4285:29)\n    at Context.thenFn (http://localhost:8080/__cypress/runner/cypress_runner.js:118349:66)\n    at Context.then (http://localhost:8080/__cypress/runner/cypress_runner.js:118600:21)",
+                "diff": "- 200\n+ 400\n"
+              },
+              "uuid": "c6c35edf-5f23-4306-9f72-359cbf3345c0",
+              "parentUUID": "5110bcc1-0c01-445b-8f78-9dec4764910e",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "a1b10b7d-b11c-4874-97e6-9595ac5f2e9c"
+          ],
+          "failures": [
+            "c6c35edf-5f23-4306-9f72-359cbf3345c0"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 2659,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "1e963657-f91d-4fee-88d5-86971c22c194",
+      "title": "",
+      "fullFile": "cypress/e2e/commandes/apiOrders.cy.ts",
+      "file": "cypress/e2e/commandes/apiOrders.cy.ts",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "32775405-fc7d-4637-aea9-8ed58a505afa",
+          "title": "GET /orders - Non authentifié, accès refusé",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Doit retourner une erreur 401 pour une requête non authentifiée",
+              "fullTitle": "GET /orders - Non authentifié, accès refusé Doit retourner une erreur 401 pour une requête non authentifiée",
+              "timedOut": null,
+              "duration": 76,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.verifierDonneesSansAuth(_support_commands__WEBPACK_IMPORTED_MODULE_0__.apiOrders, 401);",
+              "err": {},
+              "uuid": "8b74f721-fca4-48ad-8736-a6d82ab8f01b",
+              "parentUUID": "32775405-fc7d-4637-aea9-8ed58a505afa",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "8b74f721-fca4-48ad-8736-a6d82ab8f01b"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 76,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "ee951357-6005-45f7-8890-353b69498530",
+          "title": "GET /orders - Authentifié",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Requête authentifiée sur /orders retourne la liste des produits",
+              "fullTitle": "GET /orders - Authentifié Requête authentifiée sur /orders retourne la liste des produits",
+              "timedOut": null,
+              "duration": 609,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.login().then(() => {\n    cy.verifierPanier(_support_commands__WEBPACK_IMPORTED_MODULE_0__.apiOrders, 200);\n});",
+              "err": {},
+              "uuid": "444356d6-dc23-4905-9991-790e0edef86e",
+              "parentUUID": "ee951357-6005-45f7-8890-353b69498530",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "444356d6-dc23-4905-9991-790e0edef86e"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 609,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "222a15b0-aa28-4a5d-a943-7496f2898f50",
+      "title": "",
+      "fullFile": "cypress/e2e/commandes/panier.cy.ts",
+      "file": "cypress/e2e/commandes/panier.cy.ts",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "077c4e4b-4a8b-4ba1-bfa0-063996403111",
+          "title": "Panier - Test dynamique pour chaque produit",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Ajoute un produit au panier et vérifie la mise à jour du stock",
+              "fullTitle": "Panier - Test dynamique pour chaque produit Ajoute un produit au panier et vérifie la mise à jour du stock",
+              "timedOut": null,
+              "duration": 4831,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const productId = 10;\ncy.verifierStockInitial(productId);\ncy.get('@initialStock').then((initialStock) => {\n    cy.log(`Le stock initial récupéré est : ${initialStock}`);\n    cy.verifierStockProduit(productId, initialStock);\n    cy.ajouterProduitAuPanier(productId);\n    cy.verifierStockMaJ(productId);\n    cy.verifierPanier(cypress_support_commands__WEBPACK_IMPORTED_MODULE_0__.apiOrders, 200);\n});",
+              "err": {},
+              "uuid": "91c0d6d1-9e66-404f-a172-f78ec2440d3f",
+              "parentUUID": "077c4e4b-4a8b-4ba1-bfa0-063996403111",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Ne doit pas permettre l'ajout au panier d'un produit en stock négatif",
+              "fullTitle": "Panier - Test dynamique pour chaque produit Ne doit pas permettre l'ajout au panier d'un produit en stock négatif",
+              "timedOut": null,
+              "duration": 4700,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const productId = 3;\ncy.verifierStockInitialNegatif(productId);\ncy.get('@initialStock').then((initialStock) => {\n    cy.log(`Stock initial récupéré : ${initialStock}`);\n    cy.verifierStockProduit(productId, initialStock);\n    cy.ajouterProduitAuPanier(productId);\n    cy.verifierStockMaJ(productId);\n    cy.verifierPanier(cypress_support_commands__WEBPACK_IMPORTED_MODULE_0__.apiOrders, 404);\n});",
+              "err": {
+                "message": "AssertionError: expected 200 to equal 404",
+                "estack": "AssertionError: expected 200 to equal 404\n    at captureUserInvocationStack (http://localhost:8080/__cypress/runner/cypress_runner.js:138885:94)\n    at Proxy.<anonymous> (http://localhost:8080/__cypress/runner/cypress_runner.js:138913:9)\n    at Proxy.assertEqual (http://localhost:8080/__cypress/runner/cypress_runner.js:79842:12)\n    at Proxy.methodWrapper (http://localhost:8080/__cypress/runner/cypress_runner.js:77688:25)\n    at Context.eval (webpack:///./cypress/support/commands.ts:44:0)\n    at getRet (http://localhost:8080/__cypress/runner/cypress_runner.js:118338:20)\n    at tryCatcher (http://localhost:8080/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise.attempt.Promise.try (http://localhost:8080/__cypress/runner/cypress_runner.js:4285:29)\n    at Context.thenFn (http://localhost:8080/__cypress/runner/cypress_runner.js:118349:66)\n    at Context.then (http://localhost:8080/__cypress/runner/cypress_runner.js:118600:21)",
+                "diff": "- 200\n+ 404\n"
+              },
+              "uuid": "4e476462-da17-4497-ad38-93707b149b9c",
+              "parentUUID": "077c4e4b-4a8b-4ba1-bfa0-063996403111",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Ne doit pas ajouter un produit avec une quantité négative (-1)",
+              "fullTitle": "Panier - Test dynamique pour chaque produit Ne doit pas ajouter un produit avec une quantité négative (-1)",
+              "timedOut": null,
+              "duration": 4459,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request(\"GET\", \"http://localhost:8081/products\").then((response) => {\n    response.body.forEach((product) => {\n        cy.visit(`/#/products/${product.id}`);\n        cy.get('[data-cy=\"detail-product-quantity\"]').clear().type(\"-1\");\n        cy.get('[data-cy=\"detail-product-add\"]').click();\n        cy.location(\"href\").should(\"not.eq\", \"http://localhost:8080/#/cart\");\n    });\n});",
+              "err": {},
+              "uuid": "e15c2141-cf9c-4ba3-9eb0-3f668427d91f",
+              "parentUUID": "077c4e4b-4a8b-4ba1-bfa0-063996403111",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Ne doit pas ajouter un produit avec une quantité supérieure à 20 (21)",
+              "fullTitle": "Panier - Test dynamique pour chaque produit Ne doit pas ajouter un produit avec une quantité supérieure à 20 (21)",
+              "timedOut": null,
+              "duration": 6373,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.request(\"GET\", \"http://localhost:8081/products\").then((response) => {\n    response.body.forEach((product) => {\n        cy.visit(`/#/products/${product.id}`);\n        cy.get('[data-cy=\"detail-product-quantity\"]').clear().type(\"21\");\n        cy.get('[data-cy=\"detail-product-add\"]').should(\"be.disabled\");\n        cy.screenshot(`bouton_ajout_disabled_qte_21_produit_${product.id}`);\n    });\n});",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: expected '<button>' to be 'disabled'",
+                "estack": "AssertionError: Timed out retrying after 4000ms: expected '<button>' to be 'disabled'\n    at eval (webpack:///./cypress/e2e/commandes/panier.cy.ts:44:0)\nat Array.forEach (<anonymous>)\n    at Context.eval (webpack:///./cypress/e2e/commandes/panier.cy.ts:41:0)\n    at getRet (http://localhost:8080/__cypress/runner/cypress_runner.js:118338:20)\n    at tryCatcher (http://localhost:8080/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise.attempt.Promise.try (http://localhost:8080/__cypress/runner/cypress_runner.js:4285:29)\n    at Context.thenFn (http://localhost:8080/__cypress/runner/cypress_runner.js:118349:66)\n    at Context.then (http://localhost:8080/__cypress/runner/cypress_runner.js:118600:21)\n    at wrapped (http://localhost:8080/__cypress/runner/cypress_runner.js:137883:19)",
+                "diff": null
+              },
+              "uuid": "a606915f-67d0-4360-a593-c1d391b9a788",
+              "parentUUID": "077c4e4b-4a8b-4ba1-bfa0-063996403111",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "91c0d6d1-9e66-404f-a172-f78ec2440d3f",
+            "e15c2141-cf9c-4ba3-9eb0-3f668427d91f"
+          ],
+          "failures": [
+            "4e476462-da17-4497-ad38-93707b149b9c",
+            "a606915f-67d0-4360-a593-c1d391b9a788"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 20363,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "2e426ab1-455e-41aa-9ae5-61ac2739c84d",
+      "title": "",
+      "fullFile": "cypress/e2e/smoke/smokeCart.cy.ts",
+      "file": "cypress/e2e/smoke/smokeCart.cy.ts",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "a987d0d6-29e2-429a-84fc-635630ad8d61",
+          "title": "Smoke Test - Boutons Ajouter au panier",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Vérifie les boutons Ajouter au panier",
+              "fullTitle": "Smoke Test - Boutons Ajouter au panier Vérifie les boutons Ajouter au panier",
+              "timedOut": null,
+              "duration": 849,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('http://localhost:8080/#/products/3');\ncy.get(\"[data-cy='detail-product-add']\").should('exist');",
+              "err": {},
+              "uuid": "17ca9a41-8022-4e44-a092-a3080fa4becb",
+              "parentUUID": "a987d0d6-29e2-429a-84fc-635630ad8d61",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "17ca9a41-8022-4e44-a092-a3080fa4becb"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 849,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "6de35b92-5591-4880-b694-20ffeb861659",
+      "title": "",
+      "fullFile": "cypress/e2e/smoke/smokeLogin.cy.ts",
+      "file": "cypress/e2e/smoke/smokeLogin.cy.ts",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "dd775bd2-ed09-4961-8e2f-d1cd63e8523e",
+          "title": "Smoke Test - Page de connexion",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Vérifie la présence des champs et du bouton de connexion",
+              "fullTitle": "Smoke Test - Page de connexion Vérifie la présence des champs et du bouton de connexion",
+              "timedOut": null,
+              "duration": 496,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('http://localhost:8080/#/');\ncy.get('[data-cy=\"nav-link-register\"]').should('be.visible');\ncy.get('[data-cy=\"nav-link-login\"]').should('be.visible').click();\ncy.get(\"[data-cy='login-input-username']\").should('exist');\ncy.get(\"[data-cy='login-input-password']\").should('exist');\ncy.get(\"[data-cy='login-submit']\").should('exist').contains('Se connecter');",
+              "err": {},
+              "uuid": "d4214880-a94d-4fa9-8700-d04836c8720d",
+              "parentUUID": "dd775bd2-ed09-4961-8e2f-d1cd63e8523e",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "d4214880-a94d-4fa9-8700-d04836c8720d"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 496,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "b9f2553d-3552-468c-81d4-c4a1718f4448",
+      "title": "",
+      "fullFile": "cypress/e2e/smoke/smokeProduct.cy.ts",
+      "file": "cypress/e2e/smoke/smokeProduct.cy.ts",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "e94c576e-264b-481a-9e4c-8f9382e08109",
+          "title": "Smoke Test - Disponibilité des produits",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Vérifie la disponibilité du produit",
+              "fullTitle": "Smoke Test - Disponibilité des produits Vérifie la disponibilité du produit",
+              "timedOut": null,
+              "duration": 1576,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request('GET', 'http://localhost:8081/products').then((response) => {\n    const products = response.body;\n    products.forEach((product) => {\n        cy.visit(`/#/products/${product.id}`);\n        cy.get(\"[data-cy='detail-product-stock']\").should('be.visible');\n        cy.get('[data-cy=\"detail-product-price\"]').should('be.visible');\n        cy.get('[data-cy=\"detail-product-quantity\"]').should('be.visible');\n        cy.get('[data-cy=\"detail-product-add\"]').should('be.visible').should('not.be.disabled');\n    });\n});",
+              "err": {},
+              "uuid": "8c235975-7e81-4c00-a42a-7e20cd93df73",
+              "parentUUID": "e94c576e-264b-481a-9e4c-8f9382e08109",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "8c235975-7e81-4c00-a42a-7e20cd93df73"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1576,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/mochawesome-report",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

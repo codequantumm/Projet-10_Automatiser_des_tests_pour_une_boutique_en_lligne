@@ -1,6 +1,13 @@
 import { defineConfig } from 'cypress';
 
 export default defineConfig({
+  reporter: "mochawesome",
+  reporterOptions: {
+    reportDir: "cypress/reports",
+    overwrite: false,  
+    html: true,
+    json: true,
+  },
   env: {
     apiUrl: 'http://localhost:8081',
     CYPRESS_USERNAME: 'test2@test.fr',
